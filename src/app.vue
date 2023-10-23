@@ -1,13 +1,16 @@
 <template>
   <div class="newPole">
     <label>Новая запись:</label>
-    <input v-model="sborkaZadach">
+    <input @keydown.enter="addTask" v-model="sborkaZadach">
     <button @click="addTask" class="btn">
       Добавить запись
     </button>
   </div>
   <div class="spisokZadach">
 
+    <ul v-for="task in a">
+      <li>{{task}}</li>
+    </ul>
   </div>
 </template>
 
@@ -21,7 +24,8 @@ export default {
   },
   methods: {
     addTask() {
-      this.a.push({titl: this.sborkaZadach})
+      this.a.push(this.sborkaZadach)
+      this.sborkaZadach = ''
     }
   }
 }
