@@ -1,15 +1,29 @@
 <template>
   <div class="newPole">
-    Содержимое ??
-    <button class="btn">
+    <label>Новая запись:</label>
+    <input v-model="sborkaZadach">
+    <button @click="addTask" class="btn">
       Добавить запись
     </button>
+  </div>
+  <div class="spisokZadach">
+
   </div>
 </template>
 
 <script>
 export default {
-
+  data() {
+    return{
+      a: [],
+      sborkaZadach: ''
+    }
+  },
+  methods: {
+    addTask() {
+      this.a.push({titl: this.sborkaZadach})
+    }
+  }
 }
 </script>
 
