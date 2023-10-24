@@ -37,8 +37,16 @@ export default {
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  border-radius: 15px;
 }
 .btn {
   margin-left: auto;
+}
+
+.spisokZadach{
+  border: 2px solid black;
+  padding: 15px;
+  margin-top: 40px;
+  border-radius: 15px;
 }
 </style>
