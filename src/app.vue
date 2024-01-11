@@ -7,28 +7,28 @@
     </button>
   </div>
   <div class="spisokZadach">
-
-    <ul v-for="task in a">
-      <li>{{task}}</li>
-    </ul>
+    <div class="output-container" v-for="task in a" :key="task">
+      <p class="output">{{ task }}</p>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return{
-      a: [],
-      sborkaZadach: ''
-    }
-  },
-  methods: {
-    addTask() {
-      this.a.push(this.sborkaZadach)
-      this.sborkaZadach = ''
+    data() {
+      return{
+        a: JSON.parse(localStorage.getItem('tasks')) || [], // При загрузке компонента, проверяем Local Storage на наличие сохраненных задач
+        sborkaZadach: ''
+      }
+    },
+    methods: {
+      addTask() {
+        this.a.push(this.sborkaZadach);
+        this.sborkaZadach = '';
+        localStorage.setItem('tasks', JSON.stringify(this.a)); // При каждом обновлении данных, сохраняем их в Local Storage
+      }
     }
   }
-}
 </script>
 
 <style scoped>
@@ -40,5 +40,15 @@ export default {
 }
 .btn {
   margin-left: auto;
+}
+
+.output-container {
+  border: 2px solid black; /* Обводка */
+  padding: 10px; /* Отступ внутри контейнера */
+  margin-top: 10px; /* Отступ сверху */
+}
+
+.output {
+  
 }
 </style>
